@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Themes
  Plug 'dracula/vim', { 'as': 'dracula' }
+ Plug 'morhetz/gruvbox'
 
  " Navigation
  Plug 'scrooloose/nerdtree'

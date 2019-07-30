@@ -1,6 +1,6 @@
 " UI
  syntax on
- color dracula
+ colorscheme gruvbox 
  :set termguicolors
  :set number relativenumber
  :set encoding=utf8
@@ -12,7 +12,7 @@
  :set noswapfile
 
  " vim-airline theme
- let g:airline_theme='dracula' 
+ let g:airline_theme='gruvbox' 
 
  " ale lint
  let b:ale_fixers = ['eslint', 'prettier', 'php_cs_fixer']
