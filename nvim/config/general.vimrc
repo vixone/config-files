@@ -7,6 +7,7 @@
  :set mouse=a
  :set nowrap
  let g:indentLine_color_term = 239
+ filetype plugin on
 
  " disable swap files
  :set noswapfile

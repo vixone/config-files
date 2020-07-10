@@ -28,5 +28,8 @@ call plug#begin('~/.config/nvim/plugged')
  Plug 'posva/vim-vue'
  Plug 'mxw/vim-jsx'
  Plug 'StanAngeloff/php.vim'
+ Plug 'fatih/vim-go'
+
+ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
  call plug#end()

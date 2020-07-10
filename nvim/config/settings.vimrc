@@ -72,3 +72,6 @@
          \ 'dir': '\.git$\|node_modules|vendor$',
          \ 'file': '.DS_Store$'
  \ }
+
+let g:go_fmt_command = "goimports"
+let g:go_def_mode = "gopls"

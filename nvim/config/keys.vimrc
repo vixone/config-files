@@ -1,4 +1,5 @@
  let mapleader = "\<Space>"
+ let maplocalleader="\<Space>"
 
  " move start/end of line
  noremap H ^
@@ -11,8 +12,6 @@
  " remap arrow keys
  nnoremap <silent> <Left> :bprev<CR>
  nnoremap <silent> <Right> :bnext<CR>
- nnoremap <silent> <Up> :BufOnly<CR>
- nnoremap <silent> <Down> :e#<CR>
 
  " Navigation
  nnoremap <leader>j <C-w>j
@@ -56,3 +55,15 @@
  " nerdtree stuff
  nmap <leader>ne :NERDTreeToggle<CR>
  nmap <leader>nf :NERDTreeFind<CR>
+
+ " simple snippet
+ nnoremap <silent> <leader>re :let a='dd($request->response->getContent());'\|put=a<cr>
+
+ " copy buffer path to unnamed clipboard 
+ noremap <silent> <F5> :let @+=expand("%:p")<CR>
+
+ " console long from insert mode and go inside parens
+ imap gll console.log();<Esc>==f(a
+
+ " write console.log() and paste word that you have copied to your buffer e.g. console.log(copiedword)
+ nmap gll Ogll<Esc>p
