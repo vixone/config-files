@@ -19,7 +19,6 @@ lvim.keys.normal_mode["<Escape>"] = { ":noh<cr>", noremap = true, silent = true 
 
 lvim.builtin.which_key.mappings['e'] = {}
 
-lvim.keys.normal_mode["<leader>r"] = { ":NeoTreeReveal<cr>", noremap = true, silent = true }
 lvim.keys.normal_mode["<leader>e"] = {
   function()
     require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
@@ -60,6 +59,36 @@ lvim.plugins = {
   { "sainnhe/gruvbox-material" },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    config = function()
+      require("neo-tree").setup({
+        close_if_last_window = false,
+        window = {
+          width = 30,
+        },
+        buffers = {
+          follow_current_file = {
+            enabled = true,
+            leave_dirs_open = true,
+          },
+        },
+        filesystem = {
+          bind_to_cwd = false,
+          follow_current_file = { enabled = true },
+          use_libuv_file_watcher = true,
+          filtered_items = {
+            hide_dotfiles = false,
+            hide_gitignored = true,
+            hide_by_name = {
+              "node_modules",
+            },
+            never_show = {
+              ".DS_Store",
+              "thumbs.db",
+            },
+          },
+        },
+      })
+    end,
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -69,5 +98,43 @@ lvim.plugins = {
   },
 }
 
+lvim.keys.normal_mode["<leader>r"] = { ":NeoTreeReveal<cr>", noremap = true, silent = true }
+
 lvim.colorscheme = "gruvbox-material"
 vim.opt.background = "light"
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 15
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+vim.opt.updatetime = 50
+
+vim.opt.cursorline = true
+
+-- Define autocmd to disable cursorline in insert mode
+vim.cmd([[
+  au InsertEnter * set nocursorline
+  au InsertLeave * set cursorline
+]])
+
+-- clang formatter style set --
+vim.cmd([[autocmd FileType cpp,c,h setlocal formatprg=clang-format\ --style=Google]])
+
+-- Disable virtual text diagnostics
+vim.diagnostic.config({ virtual_text = false, signcolumn = true })
+
+-- Next line comment continues
+vim.cmd("autocmd Filetype * setlocal formatoptions-=ro")
