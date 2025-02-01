@@ -58,6 +58,7 @@ lvim.keys.normal_mode["H"] = ":BufferLineCyclePrev<CR>"
 -- PLUGINS --
 
 lvim.plugins = {
+  { "christoomey/vim-tmux-navigator", lazy = false },
   { "lunarvim/colorschemes" },
   { "nvim-pack/nvim-spectre" },
   { "catppuccin/nvim" },
@@ -138,8 +139,8 @@ lvim.builtin.cmp.mapping["<Tab>"] = on_tab
 
 lvim.keys.normal_mode["<leader>r"] = { ":NeoTreeReveal<cr>", noremap = true, silent = true }
 
-lvim.colorscheme = "gruvbox-material"
-vim.opt.background = "light"
+lvim.colorscheme = "catppuccin"
+vim.opt.background = "dark"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
