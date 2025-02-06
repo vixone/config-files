@@ -4,12 +4,16 @@ vim.g.neotree_auto_cd = 0
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 
 lvim.format_on_save.enabled = true
-lvim.format_on_save.pattern = { "*.lua", "*.php", "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue" }
+lvim.format_on_save.pattern = { "*.lua", "*.php", "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue", "*.go" }
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
   {
     name = "pint",
     filetypes = { "php" },
+  },
+  {
+    name = "GoFmt",
+    filetypes = { "*.go" },
   },
   {
     name = "eslint",
@@ -53,6 +57,14 @@ lvim.keys.normal_mode["-"] = ":split<CR>"
 
 lvim.keys.normal_mode["L"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["H"] = ":BufferLineCyclePrev<CR>"
+
+vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false })
+-- files
+vim.api.nvim_set_keymap("n", "QQ", ":q!<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "WW", ":w!<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "E", "$", { noremap = false })
+vim.api.nvim_set_keymap("n", "B", "^", { noremap = false })
+vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", { noremap = true })
 
 
 -- PLUGINS --
